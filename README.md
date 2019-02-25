@@ -18,7 +18,9 @@ Each will begin with `C++ Attribute:` prefix.
 ![](https://raw.githubusercontent.com/Benio101/Color.Attribute/master/Color.Attribute/Preview.png)
 
 ## Preview
-![](https://raw.githubusercontent.com/Benio101/Color.Attribute/master/Color.Attribute/PreviewEditor.png)
+| Default Attributes without extension | Color Attributes with extension enabled
+| --- | ---
+| ![](https://raw.githubusercontent.com/Benio101/Color.Attribute/master/Color.Attribute/PreviewDisabled.png) | ![](https://raw.githubusercontent.com/Benio101/Color.Attribute/master/Color.Attribute/PreviewEnabled.png)
 
 ## Limitations
 In order to provide fast execution, some rare syntax patterns are not supported by extension right now.
