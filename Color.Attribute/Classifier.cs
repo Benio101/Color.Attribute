@@ -26,24 +26,24 @@ namespace Color.Attribute
 			new Dictionary<string, IClassificationType>()
 		;
 
-		IClassificationType Attribute;
+		readonly IClassificationType Attribute;
 
 		#region Attribute.Deprecated
 
-		IClassificationType Deprecated_Mark;
-		IClassificationType Deprecated_Reason;
+		readonly IClassificationType Deprecated_Mark;
+		readonly IClassificationType Deprecated_Reason;
 
 		#endregion
 		#region Attribute.Contract
 
-		IClassificationType Contract_Expression;
-		IClassificationType Contract_Assert_Mark;
-		IClassificationType Contract_Ensures_Mark;
-		IClassificationType Contract_Ensures_Identifier;
-		IClassificationType Contract_Expects_Mark;
-		IClassificationType Contract_Level_Audit;
-		IClassificationType Contract_Level_Axiom;
-		IClassificationType Contract_Level_Default;
+		readonly IClassificationType Contract_Expression;
+		readonly IClassificationType Contract_Assert_Mark;
+		readonly IClassificationType Contract_Ensures_Mark;
+		readonly IClassificationType Contract_Ensures_Identifier;
+		readonly IClassificationType Contract_Expects_Mark;
+		readonly IClassificationType Contract_Level_Audit;
+		readonly IClassificationType Contract_Level_Axiom;
+		readonly IClassificationType Contract_Level_Default;
 
 		#endregion
 
@@ -73,47 +73,37 @@ namespace Color.Attribute
 			#region Attribute.Deprecated
 
 			Deprecated_Mark =
-				Registry.GetClassificationType("Attribute.Deprecated.Mark")
-			;
+				Registry.GetClassificationType("Attribute.Deprecated.Mark");
 
 			Deprecated_Reason =
-				Registry.GetClassificationType("Attribute.Deprecated.Reason")
-			;
+				Registry.GetClassificationType("Attribute.Deprecated.Reason");
 
 			#endregion
 			#region Attribute.Contract
 
 			Contract_Expression =
-				Registry.GetClassificationType("Attribute.Contract.Expression")
-			;
+				Registry.GetClassificationType("Attribute.Contract.Expression");
 
 			Contract_Assert_Mark =
-				Registry.GetClassificationType("Attribute.Contract.Assert.Mark")
-			;
+				Registry.GetClassificationType("Attribute.Contract.Assert.Mark");
 
 			Contract_Ensures_Mark =
-				Registry.GetClassificationType("Attribute.Contract.Ensures.Mark")
-			;
+				Registry.GetClassificationType("Attribute.Contract.Ensures.Mark");
 
 			Contract_Ensures_Identifier =
-				Registry.GetClassificationType("Attribute.Contract.Ensures.Identifier")
-			;
+				Registry.GetClassificationType("Attribute.Contract.Ensures.Identifier");
 
 			Contract_Expects_Mark =
-				Registry.GetClassificationType("Attribute.Contract.Expects.Mark")
-			;
+				Registry.GetClassificationType("Attribute.Contract.Expects.Mark");
 
 			Contract_Level_Audit =
-				Registry.GetClassificationType("Attribute.Contract.Level.Audit")
-			;
+				Registry.GetClassificationType("Attribute.Contract.Level.Audit");
 
 			Contract_Level_Axiom =
-				Registry.GetClassificationType("Attribute.Contract.Level.Axiom")
-			;
+				Registry.GetClassificationType("Attribute.Contract.Level.Axiom");
 
 			Contract_Level_Default =
-				Registry.GetClassificationType("Attribute.Contract.Level.Default")
-			;
+				Registry.GetClassificationType("Attribute.Contract.Level.Default");
 
 			#endregion
 		}
