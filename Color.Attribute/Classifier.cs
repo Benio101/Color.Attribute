@@ -19,12 +19,10 @@ namespace Color.Attribute
 		#pragma warning restore 67
 
 		private readonly Dictionary<string, IClassificationType> SingleAttributes =
-			new Dictionary<string, IClassificationType>()
-		;
+			new Dictionary<string, IClassificationType>();
 
 		private readonly Dictionary<string, IClassificationType> CommonStyleDefinitions =
-			new Dictionary<string, IClassificationType>()
-		;
+			new Dictionary<string, IClassificationType>();
 
 		readonly IClassificationType Attribute;
 
