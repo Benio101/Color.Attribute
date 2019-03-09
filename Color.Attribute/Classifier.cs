@@ -129,7 +129,7 @@ namespace Color.Attribute
 
 			foreach (Match Match in new Regex(
 					@"(?<Squares_Open>\[{2})"
-				+	@"(?<Attribute_List>.*)"
+				+	@"(?<Attribute_List>.*?)"
 				+	@"(?<Squares_Close>\]{2})"
 			).Matches(Text))
 			{
@@ -144,12 +144,15 @@ namespace Color.Attribute
 
 					var Intersections = IClassifier.GetClassificationSpans(MatchedSquares);
 					foreach (ClassificationSpan Intersection in Intersections){
-						var Classification = Intersection.ClassificationType.Classification;
-						if(
-								Classification == PredefinedClassificationTypeNames.Comment
-							||	Classification == PredefinedClassificationTypeNames.Literal
-							||	Classification == PredefinedClassificationTypeNames.String
-						){
+						var Classifications = Intersection.ClassificationType.Classification.Split(
+							new[]{" - "}, StringSplitOptions.None
+						);
+
+						if (Utils.IsClassifiedAs(Classifications, new string[]{
+							PredefinedClassificationTypeNames.Comment,
+							PredefinedClassificationTypeNames.Literal,
+							PredefinedClassificationTypeNames.String
+						})){
 							goto NextAttribute;
 						}
 					}
@@ -163,11 +166,11 @@ namespace Color.Attribute
 					)), CommonStyleDefinitions["Squares"]
 				));
 
-				// Classify Attribute List (between "[[" and "]]") as "Attribute".
+				// Classify everything from "[[" to "]]" (inclusive) as "Attribute".
 				Spans.Add(new ClassificationSpan(new SnapshotSpan(
 					Span.Snapshot, new Span(
-						Span.Start + Match.Groups["Attribute_List"].Index,
-						Match.Groups["Attribute_List"].Length
+						Span.Start + Match.Index,
+						Match.Length
 					)), Attribute
 				));
 
@@ -224,7 +227,7 @@ namespace Color.Attribute
 					var Position = AttributeTuple.Item2;
 
 					// Trim Entry (eg remove space from " nodiscard").
-					foreach(Match Attribute in new Regex(
+					foreach (Match Attribute in new Regex(
 							@"^[ \t\v\n\f]*"
 						+	@"(?<Attribute>.*?)"
 						+	@"[ \t\v\n\f]*$"
