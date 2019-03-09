@@ -27,7 +27,7 @@ In order to provide fast execution, some rare syntax patterns are not supported 
 There are no plans to waive those restrictions until intellisense shall classify C++ attributes.
 
 ### Nested `[[` & `]]`
-Due to high cost of parsing [`balanced-token`](http://eel.is/c++draft/dcl.attr.grammar#nt:balanced-token), extension greedily matches anything between `[[` and `]]` in [`SnapshotSpan`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.snapshotspan?view=visualstudiosdk-2017), splits content by `,` and trims, then finally matches standard attributes. Thus, attribute containing nested double squares can be incorrectly colored, _eg_ `[[test::covered([[likely]])]]`.
+Due to high cost of parsing [`balanced-token`](http://eel.is/c++draft/dcl.attr.grammar#nt:balanced-token), extension non greedily matches anything between `[[` and `]]` in [`SnapshotSpan`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.text.snapshotspan?view=visualstudiosdk-2017), splits content by `,` and trims, then finally matches standard attributes. Thus, attribute containing nested double squares can be incorrectly colored, _eg_ `[[test::covered([[likely]])]]`.
 
 ### Comments
 Comments in attributes are not supported. They are treated as text for faster execution. This can cause some attributes to be incorrectly colored, _eg_ `[[using/*civ1*/civ2: fast, nodiscard]]`.
