@@ -150,6 +150,7 @@ namespace Color.Attribute
 
 						if (Utils.IsClassifiedAs(Classifications, new string[]{
 							PredefinedClassificationTypeNames.Comment,
+							"XML Doc Comment", // Triple slash comment
 							PredefinedClassificationTypeNames.Literal,
 							PredefinedClassificationTypeNames.String
 						})){
