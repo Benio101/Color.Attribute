@@ -10,6 +10,7 @@ namespace Color.Attribute
 		// > The field is never used
 		// Reason The field is used by MEF.
 		#pragma warning disable 169
+		#pragma warning disable IDE0051
 
 		[Export(typeof(ClassificationTypeDefinition))]
 		[Name("Attribute")]
@@ -130,7 +131,8 @@ namespace Color.Attribute
 
 		#endregion
 		#endregion
-
+		
+		#pragma warning restore IDE0051
 		#pragma warning restore 169
 	}
 }
