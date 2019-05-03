@@ -12,7 +12,7 @@ namespace Color.Attribute
 		: IClassifier
 	{
 		private bool IsClassificationRunning;
-		private IClassifier IClassifier;
+		private readonly IClassifier IClassifier;
 
 		#pragma warning disable 67
 		public event EventHandler<ClassificationChangedEventArgs> ClassificationChanged;
