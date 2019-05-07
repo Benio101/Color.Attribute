@@ -10,7 +10,7 @@
 Extension adds options to overwrite colors of certain C++ Attributes in files of `ContentType` `"C/C++"`, _eg_ `.cpp` or `.h` files.
 
 ## Usage
-New entries will appear in `Tools` → `Options` → `Fonts and Colors` → `Text Editor`.<br>
+New entries will appear in `Tools` → `Options` → `Environment` → `Fonts and Colors` → `Text Editor`.<br>
 Each will begin with `C++ Attribute:` prefix.
 - Edit their color values, until you want to keep extension default ones (listed below).
 - If you don't want to change some attribute's color at all, set it's `Item foreground` value to `Automatic`.
