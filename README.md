@@ -7,7 +7,8 @@
 | `master` | [![Build status](https://ci.appveyor.com/api/projects/status/af3p32abt7un5ul3/branch/master?svg=true)](https://ci.appveyor.com/project/Benio101/color-attribute/branch/master)
 
 ## Description
-Extension adds options to overwrite colors of certain C++ Attributes in files of `ContentType` `"C/C++"`, _eg_ `.cpp` or `.h` files.
+Extension adds options to overwrite colors of certain C++ Attributes.<br>
+Extension works in files of `ContentType` `"C/C++"`, _eg_ `.cpp` or `.h` files.
 
 ## Usage
 New entries will appear in `Tools` → `Options` → `Environment` → `Fonts and Colors` → `Text Editor`.<br>
