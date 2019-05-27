@@ -24,24 +24,24 @@ namespace Color.Attribute
 		private readonly Dictionary<string, IClassificationType> CommonStyleDefinitions =
 			new Dictionary<string, IClassificationType>();
 
-		readonly IClassificationType Attribute;
+		private readonly IClassificationType Attribute;
 
 		#region Attribute.Deprecated
 
-		readonly IClassificationType Deprecated_Mark;
-		readonly IClassificationType Deprecated_Reason;
+		private readonly IClassificationType Deprecated_Mark;
+		private readonly IClassificationType Deprecated_Reason;
 
 		#endregion
 		#region Attribute.Contract
 
-		readonly IClassificationType Contract_Expression;
-		readonly IClassificationType Contract_Assert_Mark;
-		readonly IClassificationType Contract_Ensures_Mark;
-		readonly IClassificationType Contract_Ensures_Identifier;
-		readonly IClassificationType Contract_Expects_Mark;
-		readonly IClassificationType Contract_Level_Audit;
-		readonly IClassificationType Contract_Level_Axiom;
-		readonly IClassificationType Contract_Level_Default;
+		private readonly IClassificationType Contract_Expression;
+		private readonly IClassificationType Contract_Assert_Mark;
+		private readonly IClassificationType Contract_Ensures_Mark;
+		private readonly IClassificationType Contract_Ensures_Identifier;
+		private readonly IClassificationType Contract_Expects_Mark;
+		private readonly IClassificationType Contract_Level_Audit;
+		private readonly IClassificationType Contract_Level_Axiom;
+		private readonly IClassificationType Contract_Level_Default;
 
 		#endregion
 
@@ -54,14 +54,11 @@ namespace Color.Attribute
 
 			Attribute = Registry.GetClassificationType("Attribute");
 
-			foreach (string Attribute in Meta.SingleAttributesList){
-				SingleAttributes.Add(
-					Attribute,
-					Registry.GetClassificationType("Attribute." + Attribute)
-				);
+			foreach (var Attr in Meta.SingleAttributesList){
+				SingleAttributes.Add(Attr, Registry.GetClassificationType("Attribute." + Attr));
 			}
 
-			foreach (string Definition in Meta.CommonStyleDefinitions){
+			foreach (var Definition in Meta.CommonStyleDefinitions){
 				CommonStyleDefinitions.Add(
 					Definition,
 					Registry.GetClassificationType("Attribute." + Definition)
@@ -125,30 +122,30 @@ namespace Color.Attribute
 			IList<ClassificationSpan> Spans = new List<ClassificationSpan>();
 
 			if (Span.IsEmpty) return Spans;
-			string Text = Span.GetText();
+			var Text = Span.GetText();
 
 			foreach (Match Match in new Regex(
 					@"(?<Squares_Open>\[{2})"
-				+	@"(?<Attribute_List>.*?)"
+				+	 "(?<Attribute_List>.*?)"
 				+	@"(?<Squares_Close>\]{2})"
 			).Matches(Text))
 			{
 				// Filter out: comments, literals and strings.
 				// Check "[[" and "]]" only, not attribute list inside Match
 				// as it can contain comments, literals or strings as value.
-				foreach (string Square in new[]{"Squares_Open", "Squares_Close"}){
+				foreach (var Square in new[]{"Squares_Open", "Squares_Close"}){
 					var MatchedSquares = new SnapshotSpan(Span.Snapshot, new Span(
 						Span.Start + Match.Groups[Square].Index,
 						Match.Groups[Square].Length
 					));
 
 					var Intersections = IClassifier.GetClassificationSpans(MatchedSquares);
-					foreach (ClassificationSpan Intersection in Intersections){
+					foreach (var Intersection in Intersections){
 						var Classifications = Intersection.ClassificationType.Classification.Split(
 							new[]{" - "}, StringSplitOptions.None
 						);
 
-						if (Utils.IsClassifiedAs(Classifications, new string[]{
+						if (Utils.IsClassifiedAs(Classifications, new[]{
 							PredefinedClassificationTypeNames.Comment,
 							"XML Doc Comment", // Triple slash comment
 							PredefinedClassificationTypeNames.Literal,
@@ -184,21 +181,21 @@ namespace Color.Attribute
 				));
 
 				// Attribute List (between "[[" and "]]").
-				string AttributeList = Match.Groups["Attribute_List"].Value;
+				var AttributeList = Match.Groups["Attribute_List"].Value;
 
 				// Attribute List offset (relative to Span.Start).
-				int Offset = Match.Groups["Attribute_List"].Index;
+				var Offset = Match.Groups["Attribute_List"].Index;
 
 				// Offset of iterated attribute (relative to @Offset).
-				int Index = 0;
+				var Index = 0;
 
 				// @AttributeList splitted by comma (","):
 				// - Index1  Attribute's text
 				// - Index2  Attribute's offset (used as `start` to construct new Span)
-				List<Tuple<string, int>> Attributes = new List<Tuple<string, int>>();
+				var Attributes = new List<Tuple<string, int>>();
 
 				// Split AttributeList by comma (",").
-				foreach (Match Comma in new Regex(@"(?<Comma>,)").Matches(AttributeList)){
+				foreach (Match Comma in new Regex("(?<Comma>,)").Matches(AttributeList)){
 					Attributes.Add(new Tuple<string, int>(
 						AttributeList.Substring(Index, Comma.Groups["Comma"].Index - Index),
 						Span.Start + Offset + Index
@@ -228,14 +225,14 @@ namespace Color.Attribute
 					var Position = AttributeTuple.Item2;
 
 					// Trim Entry (eg remove space from " nodiscard").
-					foreach (Match Attribute in new Regex(
+					foreach (Match Attr in new Regex(
 							@"^[ \t\v\n\f]*"
-						+	@"(?<Attribute>.*?)"
+						+	 "(?<Attribute>.*?)"
 						+	@"[ \t\v\n\f]*$"
 					).Matches(Entry))
 					{
-						Entry = Attribute.Groups["Attribute"].Value;
-						Position += Attribute.Groups["Attribute"].Index;
+						Entry = Attr.Groups["Attribute"].Value;
+						Position += Attr.Groups["Attribute"].Index;
 					}
 
 					// Ignore empty entries (eg after trailing comma at "[[nodiscard,]]")
@@ -246,16 +243,16 @@ namespace Color.Attribute
 
 					#region Single Attributes
 
-					foreach (string Attribute in Meta.SingleAttributesList){
+					foreach (var Attr in Meta.SingleAttributesList){
 						foreach (Match Value in new Regex(
-							@"^(?<Attribute>" + Attribute + @")$"
+							"^(?<Attribute>" + Attr + ")$"
 						).Matches(Entry))
 						{
 							Spans.Add(new ClassificationSpan(new SnapshotSpan(
 								Span.Snapshot, new Span(
 									Position + Value.Groups["Attribute"].Index,
 									Value.Groups["Attribute"].Length
-								)), SingleAttributes[Attribute]
+								)), SingleAttributes[Attr]
 							));
 						}
 					}
@@ -264,15 +261,15 @@ namespace Color.Attribute
 					#region Attribute.Deprecated
 
 					foreach (Match Value in new Regex(
-							@"^(?<Attribute>deprecated)"       // "deprecated"
-						+	@"("
+							"^(?<Attribute>deprecated)"        // "deprecated"
+						+	"("
 						+		@"[ \t\v\n\f]*"
 						+		@"(?<Paren_Open>\()"           // "("
 						+		@"[ \t\v\n\f]*"
 						+		@"(?<Reason>[^""]*""[^""]*"")" // string-literal (simplified)
 						+		@"[ \t\v\n\f]*"
 						+		@"(?<Paren_Close>\))"          // ")"
-						+	@")?$"
+						+	")?$"
 					).Matches(Entry))
 					{
 						Spans.Add(new ClassificationSpan(new SnapshotSpan(
@@ -282,47 +279,51 @@ namespace Color.Attribute
 							)), Deprecated_Mark
 						));
 
-						if (Value.Groups["Reason"].Length > 0)
-						{
-							Spans.Add(new ClassificationSpan(new SnapshotSpan(
-								Span.Snapshot, new Span(
-									Position + Value.Groups["Paren_Open"].Index,
-									Value.Groups["Paren_Open"].Length
-								)), CommonStyleDefinitions["Punct"]
-							));
+						if (Value.Groups["Reason"].Length == 0) continue;
 
-							Spans.Add(new ClassificationSpan(new SnapshotSpan(
-								Span.Snapshot, new Span(
-									Position + Value.Groups["Reason"].Index,
-									Value.Groups["Reason"].Length
-								)), Deprecated_Reason
-							));
+						Spans.Add(new ClassificationSpan(new SnapshotSpan(
+							Span.Snapshot, new Span(
+								Position + Value.Groups["Paren_Open"].Index,
+								Value.Groups["Paren_Open"].Length
+							)), CommonStyleDefinitions["Punct"]
+						));
 
-							Spans.Add(new ClassificationSpan(new SnapshotSpan(
-								Span.Snapshot, new Span(
-									Position + Value.Groups["Paren_Close"].Index,
-									Value.Groups["Paren_Close"].Length
-								)), CommonStyleDefinitions["Punct"]
-							));
-						}
+						Spans.Add(new ClassificationSpan(new SnapshotSpan(
+							Span.Snapshot, new Span(
+								Position + Value.Groups["Reason"].Index,
+								Value.Groups["Reason"].Length
+							)), Deprecated_Reason
+						));
+
+						Spans.Add(new ClassificationSpan(new SnapshotSpan(
+							Span.Snapshot, new Span(
+								Position + Value.Groups["Paren_Close"].Index,
+								Value.Groups["Paren_Close"].Length
+							)), CommonStyleDefinitions["Punct"]
+						));
 					}
 
 					#endregion
 					#region Attribute.Contract
 
-					foreach (string Attribute in Meta.SingleContractAttributeList){
-						IClassificationType ClassificationMark = Contract_Assert_Mark;
-						if (Attribute == "expects") ClassificationMark = Contract_Expects_Mark;
+					foreach (var Attr in Meta.SingleContractAttributeList)
+					{
+						var ClassificationMark =
+						(
+								Attr == "expects"
+							?	Contract_Expects_Mark
+							:	Contract_Assert_Mark
+						);
 
 						foreach (Match Value in new Regex(
-								@"^(?<Attribute>" + Attribute + @")"   // attribute-token
-							+	@"("
+								"^(?<Attribute>" + Attr + ")"         // attribute-token
+							+	"("
 							+		@"[ \t\v\n\f]+"
-							+		@"(?<Level>(audit|axiom|default))" // contract-level
-							+	@")?"
+							+		"(?<Level>(audit|axiom|default))" // contract-level
+							+	")?"
 							+	@"[ \t\v\n\f]*"
-							+	@"(?<Punct>:)"                         // ":"
-							+	@"(?<Expression>([^\]]|\](?!\]))+)$"   // expression (simplified)
+							+	"(?<Punct>:)"                         // ":"
+							+	@"(?<Expression>([^\]]|\](?!\]))+)$"  // expression (simplified)
 						).Matches(Entry))
 						{
 							Spans.Add(new ClassificationSpan(new SnapshotSpan(
@@ -333,11 +334,23 @@ namespace Color.Attribute
 							));
 
 							if (Value.Groups["Level"].Length > 0){
-								string Level = Value.Groups["Level"].Value;
+								var Level = Value.Groups["Level"].Value;
 
-								IClassificationType ClassificationLevel = Contract_Level_Default;
-								if (Level == "audit") ClassificationLevel = Contract_Level_Audit;
-								if (Level == "axiom") ClassificationLevel = Contract_Level_Axiom;
+								IClassificationType ClassificationLevel;
+								switch (Level)
+								{
+									case "audit":
+										ClassificationLevel = Contract_Level_Audit;
+										break;
+
+									case "axiom":
+										ClassificationLevel = Contract_Level_Axiom;
+										break;
+
+									default:
+										ClassificationLevel = Contract_Level_Default;
+										break;
+								}
 
 								Spans.Add(new ClassificationSpan(new SnapshotSpan(
 									Span.Snapshot, new Span(
@@ -367,18 +380,18 @@ namespace Color.Attribute
 					#region Attribute.Contract.Ensures
 
 					foreach (Match Value in new Regex(
-							@"^(?<Attribute>ensures)"                        // "ensures"
-						+	@"("
+							"^(?<Attribute>ensures)"                       // "ensures"
+						+	"("
 						+		@"[ \t\v\n\f]+"
-						+		@"(?<Level>(audit|axiom|default))"           // contract-level
-						+	@")?"
-						+	@"("
+						+		"(?<Level>(audit|axiom|default))"          // contract-level
+						+	")?"
+						+	"("
 						+		@"[ \t\v\n\f]+"
-						+		@"(?<Identifier>" + Utils.Identifier + @")?" // identifier
-						+	@")?"
+						+		"(?<Identifier>" + Utils.Identifier + ")?" // identifier
+						+	")?"
 						+	@"[ \t\v\n\f]*"
-						+	@"(?<Punct>:)"                                   // ":"
-						+	@"(?<Expression>([^\]]|\](?!\]))+)$"             // expression (s-fied)
+						+	"(?<Punct>:)"                                  // ":"
+						+	@"(?<Expression>([^\]]|\](?!\]))+)$"           // expression (s-fied)
 					).Matches(Entry))
 					{
 						Spans.Add(new ClassificationSpan(new SnapshotSpan(
@@ -389,11 +402,23 @@ namespace Color.Attribute
 						));
 
 						if (Value.Groups["Level"].Length > 0){
-							string Level = Value.Groups["Level"].Value;
+							var Level = Value.Groups["Level"].Value;
 
-							IClassificationType ClassificationLevel = Contract_Level_Default;
-							if (Level == "audit") ClassificationLevel = Contract_Level_Audit;
-							if (Level == "axiom") ClassificationLevel = Contract_Level_Axiom;
+							IClassificationType ClassificationLevel;
+							switch (Level)
+							{
+								case "audit":
+									ClassificationLevel = Contract_Level_Audit;
+									break;
+
+								case "axiom":
+									ClassificationLevel = Contract_Level_Axiom;
+									break;
+
+								default:
+									ClassificationLevel = Contract_Level_Default;
+									break;
+							}
 
 							Spans.Add(new ClassificationSpan(new SnapshotSpan(
 								Span.Snapshot, new Span(

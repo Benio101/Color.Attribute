@@ -1,14 +1,16 @@
-﻿namespace Color.Attribute
+﻿using System.Linq;
+
+namespace Color.Attribute
 {
 	internal static class Utils
 	{
 		// Characters of @Identifier that can be on every place (even on first character).
-		internal static readonly string IdentifierCommonCharacters
+		private const string IdentifierCommonCharacters
 
-			= @"(["
+			= "(["
 
 				// ASCII
-				+ @"_a-zA-Z"
+				+ "_a-zA-Z"
 
 				// MSVC specific
 				+ @"\$"
@@ -22,67 +24,67 @@
 				+ @"\u2E80-\u2FFF\u3004-\u3007\u3021-\u302F\u3031-\u303F\u3040-\uD7FF\uF900-\uFD3D"
 				+ @"\uFD40-\uFDCF\uFDF0-\uFE1F\uFE30-\uFE44\uFE47-\uFFFD"
 
-			+ @"])"
+			+ "])"
 		;
 
 		// Simplified C++ identifier pattern (MSVC specific — includes `$`).
-		internal static readonly string Identifier
+		internal const string Identifier
 
-			= @"("
+			= "("
 
 				// Identifier cannot begin with underscore immnediatelly followed by upper letter.
 				+ @"(?!_\p{Lu})"
 
 				// Identifier cannot contain sequence of two underscores.
-				+ @"(?!.*__)"
+				+ "(?!.*__)"
 
-			+ @"("
+			+ "("
 
 				// First character (exactly one)
 				+ IdentifierCommonCharacters
 
 				// Next characters (any number)
-				+ @"("
+				+ "("
 
 					+ IdentifierCommonCharacters
-					+ @"|["
+					+ "|["
 
 					// Not allowed as first character
-					+ @"0-9" + @"\u0300-\u036F\u1DC0-\u1DFF\u20D0-\u20FF\uFE20-\uFE2F"
+					+ "0-9" + @"\u0300-\u036F\u1DC0-\u1DFF\u20D0-\u20FF\uFE20-\uFE2F"
 
-				+ @"])*"
+				+ "])*"
 
-			+ @"))"
+			+ "))"
 		;
 
 		// Check if $Source classifications contains any classification from $Search.
-		internal static bool IsClassifiedAs(string[] Source, string[] Search){
-			if (Source.Length == 0) return false;
-			if (Search.Length == 0) return false;
+		internal static bool IsClassifiedAs
+		(
+			string[] Source,
+			string[] Search
+		){
+			return
+			(
+					Source.Length > 0
+				&&	Search.Length > 0
+				&&	(
+						from SourceClassification in Source
+						from SearchClassification in Search
 
-			foreach (string SourceClassification in Source){
-				foreach (string SearchClassification in Search){
-					string SourceEntry = SourceClassification.ToLower();
-					string SearchEntry = SearchClassification.ToLower();
+						let SourceEntry = SourceClassification.ToLower()
+						let SearchEntry = SearchClassification.ToLower()
 
-					if(
-							SourceEntry == SearchEntry
-						||	SourceEntry.StartsWith(SearchEntry + ".")
-					){
-						return true;
-					}
-				}
-			}
+						where
+						(
+								SourceEntry == SearchEntry
+							||	SourceEntry.StartsWith(SearchEntry + ".")
+						)
 
-			return false;
-		}
+						select SourceEntry
+					)
 
-		// Check if $Source classifications contains $Search classification.
-		internal static bool IsClassifiedAs(string[] Source, string Search){
-			if (Source.Length == 0) return false;
-			if (Search.Length == 0) return false;
-
-			return IsClassifiedAs(Source, new string[]{Search});
+					.Any()
+			);
 		}
 	}
 }
