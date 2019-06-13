@@ -51,14 +51,14 @@ Full list of customizable Attribute entries, with their default colors:
 | :---                            | :---      | :---       | :---          |
 | _C++ Attribute_                 | Plain     | Dark White | 176, 176, 176 |
 | `carries_dependency`            | Keyword   | Blue       | 128, 176, 224 |
-| `deprecated`                    | Important | Dark Red   | 224,  96,  96 |
-| `deprecated`: Reason            | String    | Dark Green | 128, 176,  96 |
-| `fallthrough`                   | Flow      | Dark Blue  |  96, 128, 224 |
+| `deprecated`                    | Important | Dark Red   | 224, ​ 96, ​ 96 |
+| `deprecated`: Reason            | String    | Dark Green | 128, 176, ​ 96 |
+| `fallthrough`                   | Flow      | Dark Blue  | ​ 96, 128, 224 |
 | `likely`                        | Positive  | Green      | 176, 224, 128 |
 | `maybe_unused`                  | Positive  | Green      | 176, 224, 128 |
 | `no_unique_address`             | Keyword   | Blue       | 128, 176, 224 |
 | `nodiscard`                     | Warning   | Yellow     | 224, 224, 128 |
-| `noreturn`                      | Important | Dark Red   | 224,  96,  96 |
+| `noreturn`                      | Important | Dark Red   | 224, ​ 96, ​ 96 |
 | `optimize_for_synchronized`     | Keyword   | Blue       | 128, 176, 224 |
 | `unlikely`                      | Negative  | Red        | 224, 128, 128 |
 | Contract: `assert`              | Warning   | Yellow     | 224, 224, 128 |
