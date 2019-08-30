@@ -12,7 +12,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = Priority.High)]
 	internal sealed class Format_Attribute
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute()
 		{
@@ -30,7 +31,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_Squares
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_Squares()
 		{
@@ -48,7 +50,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_Punct
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_Punct()
 		{
@@ -66,7 +69,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_carries_dependency
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_carries_dependency()
 		{
@@ -84,7 +88,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_fallthrough
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_fallthrough()
 		{
@@ -102,7 +107,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_likely
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_likely()
 		{
@@ -120,7 +126,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_maybe_unused
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_maybe_unused()
 		{
@@ -138,7 +145,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_no_unique_address
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_no_unique_address()
 		{
@@ -156,7 +164,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_nodiscard
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_nodiscard()
 		{
@@ -174,7 +183,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_noreturn
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_noreturn()
 		{
@@ -192,7 +202,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_optimize_for_synchronized
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_optimize_for_synchronized()
 		{
@@ -210,7 +221,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_unlikely
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_unlikely()
 		{
@@ -230,7 +242,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_Deprecated_Mark
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_Deprecated_Mark()
 		{
@@ -248,7 +261,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_Deprecated_Reason
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_Deprecated_Reason()
 		{
@@ -269,7 +283,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_Contract_Expression
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_Contract_Expression()
 		{
@@ -287,7 +302,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_Contract_Assert
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_Contract_Assert()
 		{
@@ -305,7 +321,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_Contract_Ensures_Mark
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_Contract_Ensures_Mark()
 		{
@@ -323,7 +340,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_Contract_Ensures_Identifier
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_Contract_Ensures_Identifier()
 		{
@@ -341,7 +359,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_Contract_Expects
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_Contract_Expects()
 		{
@@ -361,7 +380,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_Contract_Level_Default
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_Contract_Level_Default()
 		{
@@ -379,7 +399,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_Contract_Level_Audit
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_Contract_Level_Audit()
 		{
@@ -397,7 +418,8 @@ namespace Color.Attribute
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
 	internal sealed class Format_Attribute_Contract_Level_Axiom
-		: ClassificationFormatDefinition
+	:
+		ClassificationFormatDefinition
 	{
 		public Format_Attribute_Contract_Level_Axiom()
 		{
