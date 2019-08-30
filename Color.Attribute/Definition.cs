@@ -1,16 +1,16 @@
-﻿using System.ComponentModel.Composition;
-
-using Microsoft.VisualStudio.Text.Classification;
+﻿using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
+using System.ComponentModel.Composition;
 
 namespace Color.Attribute
 {
 	internal static class Definitions
 	{
-		// > The field is never used
-		// Reason The field is used by MEF.
 		#pragma warning disable 169
 		#pragma warning disable IDE0051
+
+		// > The field is never used
+		// Reason: The field is used by MEF.
 
 		[Export(typeof(ClassificationTypeDefinition))]
 		[Name("Attribute")]
@@ -131,7 +131,7 @@ namespace Color.Attribute
 
 		#endregion
 		#endregion
-		
+
 		#pragma warning restore IDE0051
 		#pragma warning restore 169
 	}

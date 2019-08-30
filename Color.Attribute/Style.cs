@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.Composition;
-
-using Microsoft.VisualStudio.Language.StandardClassification;
+﻿using Microsoft.VisualStudio.Language.StandardClassification;
 using Microsoft.VisualStudio.Text.Classification;
 using Microsoft.VisualStudio.Utilities;
+using System.ComponentModel.Composition;
 
 namespace Color.Attribute
 {
@@ -15,7 +14,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute(){
+		public Format_Attribute()
+		{
 			DisplayName = "C++ Attribute";
 
 			BackgroundCustomizable = false;
@@ -32,7 +32,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_Squares
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_Squares(){
+		public Format_Attribute_Squares()
+		{
 			DisplayName = "C++ Attribute: Punctuation: \"[[\" & \"]]\"";
 
 			BackgroundCustomizable = false;
@@ -49,7 +50,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_Punct
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_Punct(){
+		public Format_Attribute_Punct()
+		{
 			DisplayName = "C++ Attribute: Punctuation";
 
 			BackgroundCustomizable = false;
@@ -66,7 +68,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_carries_dependency
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_carries_dependency(){
+		public Format_Attribute_carries_dependency()
+		{
 			DisplayName = "C++ Attribute: \"carries_dependency\"";
 
 			BackgroundCustomizable = false;
@@ -83,7 +86,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_fallthrough
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_fallthrough(){
+		public Format_Attribute_fallthrough()
+		{
 			DisplayName = "C++ Attribute: \"fallthrough\"";
 
 			BackgroundCustomizable = false;
@@ -100,7 +104,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_likely
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_likely(){
+		public Format_Attribute_likely()
+		{
 			DisplayName = "C++ Attribute: \"likely\"";
 
 			BackgroundCustomizable = false;
@@ -117,7 +122,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_maybe_unused
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_maybe_unused(){
+		public Format_Attribute_maybe_unused()
+		{
 			DisplayName = "C++ Attribute: \"maybe_unused\"";
 
 			BackgroundCustomizable = false;
@@ -134,7 +140,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_no_unique_address
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_no_unique_address(){
+		public Format_Attribute_no_unique_address()
+		{
 			DisplayName = "C++ Attribute: \"no_unique_address\"";
 
 			BackgroundCustomizable = false;
@@ -151,7 +158,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_nodiscard
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_nodiscard(){
+		public Format_Attribute_nodiscard()
+		{
 			DisplayName = "C++ Attribute: \"nodiscard\"";
 
 			BackgroundCustomizable = false;
@@ -168,7 +176,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_noreturn
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_noreturn(){
+		public Format_Attribute_noreturn()
+		{
 			DisplayName = "C++ Attribute: \"noreturn\"";
 
 			BackgroundCustomizable = false;
@@ -185,7 +194,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_optimize_for_synchronized
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_optimize_for_synchronized(){
+		public Format_Attribute_optimize_for_synchronized()
+		{
 			DisplayName = "C++ Attribute: \"optimize_for_synchronized\"";
 
 			BackgroundCustomizable = false;
@@ -202,7 +212,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_unlikely
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_unlikely(){
+		public Format_Attribute_unlikely()
+		{
 			DisplayName = "C++ Attribute: \"unlikely\"";
 
 			BackgroundCustomizable = false;
@@ -221,7 +232,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_Deprecated_Mark
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_Deprecated_Mark(){
+		public Format_Attribute_Deprecated_Mark()
+		{
 			DisplayName = "C++ Attribute: \"deprecated\"";
 
 			BackgroundCustomizable = false;
@@ -238,7 +250,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_Deprecated_Reason
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_Deprecated_Reason(){
+		public Format_Attribute_Deprecated_Reason()
+		{
 			DisplayName = "C++ Attribute: \"deprecated\": Reason";
 
 			BackgroundCustomizable = false;
@@ -258,7 +271,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_Contract_Expression
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_Contract_Expression(){
+		public Format_Attribute_Contract_Expression()
+		{
 			DisplayName = "C++ Attribute: Contract: Expression";
 
 			BackgroundCustomizable = false;
@@ -275,7 +289,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_Contract_Assert
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_Contract_Assert(){
+		public Format_Attribute_Contract_Assert()
+		{
 			DisplayName = "C++ Attribute: Contract: \"assert\"";
 
 			BackgroundCustomizable = false;
@@ -292,7 +307,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_Contract_Ensures_Mark
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_Contract_Ensures_Mark(){
+		public Format_Attribute_Contract_Ensures_Mark()
+		{
 			DisplayName = "C++ Attribute: Contract: \"ensures\"";
 
 			BackgroundCustomizable = false;
@@ -309,7 +325,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_Contract_Ensures_Identifier
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_Contract_Ensures_Identifier(){
+		public Format_Attribute_Contract_Ensures_Identifier()
+		{
 			DisplayName = "C++ Attribute: Contract: \"ensures\": Identifier";
 
 			BackgroundCustomizable = false;
@@ -326,7 +343,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_Contract_Expects
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_Contract_Expects(){
+		public Format_Attribute_Contract_Expects()
+		{
 			DisplayName = "C++ Attribute: Contract: \"expects\"";
 
 			BackgroundCustomizable = false;
@@ -345,7 +363,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_Contract_Level_Default
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_Contract_Level_Default(){
+		public Format_Attribute_Contract_Level_Default()
+		{
 			DisplayName = "C++ Attribute: Contract: Level: \"default\"";
 
 			BackgroundCustomizable = false;
@@ -362,7 +381,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_Contract_Level_Audit
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_Contract_Level_Audit(){
+		public Format_Attribute_Contract_Level_Audit()
+		{
 			DisplayName = "C++ Attribute: Contract: Level: \"audit\"";
 
 			BackgroundCustomizable = false;
@@ -379,7 +399,8 @@ namespace Color.Attribute
 	internal sealed class Format_Attribute_Contract_Level_Axiom
 		: ClassificationFormatDefinition
 	{
-		public Format_Attribute_Contract_Level_Axiom(){
+		public Format_Attribute_Contract_Level_Axiom()
+		{
 			DisplayName = "C++ Attribute: Contract: Level: \"axiom\"";
 
 			BackgroundCustomizable = false;
