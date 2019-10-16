@@ -72,3 +72,8 @@ Full list of customizable Attribute entries, with their default colors:
 | Contract: Level: `default`      | Negative  | Red        | 224, 128, 128 |
 | Punctuation                     | Punct     | Gray       | 128, 128, 128 |
 | Punctuation: `[[` & `]]`        | Punct     | Gray       | 128, 128, 128 |
+
+## Newer versions
+### 2019
+- Branch: [`master`](https://github.com/Benio101/Color.Attribute/tree/master)
+- Marketplace: [`Color.Attribute`](https://marketplace.visualstudio.com/items?itemName=Benio.ColorAttribute2019)
