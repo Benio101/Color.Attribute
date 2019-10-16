@@ -2,10 +2,10 @@
 [Visual Studio](https://visualstudio.microsoft.com) extension: Color C++ Attributes.
 
 ## Status
-| Branch   | Build Status
-| ---      | ---
-| `master` | [![Build status](https://ci.appveyor.com/api/projects/status/af3p32abt7un5ul3/branch/master?svg=true)](https://ci.appveyor.com/project/Benio101/color-attribute/branch/master)
-| `2017` | [![Build status](https://ci.appveyor.com/api/projects/status/af3p32abt7un5ul3/branch/2017?svg=true)](https://ci.appveyor.com/project/Benio101/color-attribute/branch/2017)
+| Branch | Build Status
+| ---    | ---
+| [`master`](https://github.com/Benio101/Color.Attribute/tree/master) | [![Build status](https://ci.appveyor.com/api/projects/status/af3p32abt7un5ul3/branch/master?svg=true)](https://ci.appveyor.com/project/Benio101/color-attribute/branch/master)
+| [`2017`](https://github.com/Benio101/Color.Attribute/tree/2017) | [![Build status](https://ci.appveyor.com/api/projects/status/af3p32abt7un5ul3/branch/2017?svg=true)](https://ci.appveyor.com/project/Benio101/color-attribute/branch/2017)
 
 ## Description
 Extension adds options to overwrite colors of certain C++ Attributes.<br>
