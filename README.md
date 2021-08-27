@@ -76,8 +76,8 @@ Full list of customizable Attribute entries, with their default colors:
 
 ## Newer versions
 ### 2019
-- Branch: [`master`](https://github.com/Benio101/Color.Attribute/tree/master)
-- Marketplace: [`Color.Attribute`](https://marketplace.visualstudio.com/items?itemName=Benio.ColorAttribute2019)
+- Branch: [`2019`](https://github.com/Benio101/Color.Attribute/tree/2019)
+- Marketplace: [`Color.Attribute (2019)`](https://marketplace.visualstudio.com/items?itemName=Benio.ColorAttribute2019)
 ### 2022
 - Branch: [`2022`](https://github.com/Benio101/Color.Attribute/tree/2022)
 - Marketplace: [`Color.Attribute (2022)`](https://marketplace.visualstudio.com/items?itemName=Benio.ColorAttribute2022)
