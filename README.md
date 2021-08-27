@@ -4,6 +4,7 @@
 ## Status
 | Branch | Build Status
 | ---    | ---
+| [`2022`](https://github.com/Benio101/Color.Attribute/tree/2022) | [![Build status](https://ci.appveyor.com/api/projects/status/af3p32abt7un5ul3/branch/2022?svg=true)](https://ci.appveyor.com/project/Benio101/color-attribute/branch/2022)
 | [`2019`](https://github.com/Benio101/Color.Attribute/tree/2019) | [![Build status](https://ci.appveyor.com/api/projects/status/af3p32abt7un5ul3/branch/2019?svg=true)](https://ci.appveyor.com/project/Benio101/color-attribute/branch/2019)
 | [`2017`](https://github.com/Benio101/Color.Attribute/tree/2017) | [![Build status](https://ci.appveyor.com/api/projects/status/af3p32abt7un5ul3/branch/2017?svg=true)](https://ci.appveyor.com/project/Benio101/color-attribute/branch/2017)
 
@@ -52,20 +53,20 @@ Full list of customizable Attribute entries, with their default colors:
 | :---                            | :---      | :---       | :---          |
 | _C++ Attribute_                 | Plain     | Dark White | 176, 176, 176 |
 | `carries_dependency`            | Keyword   | Blue       | 128, 176, 224 |
-| `deprecated`                    | Important | Dark Red   | 224, ​ 96, ​ 96 |
-| `deprecated`: Reason            | String    | Dark Green | 128, 176, ​ 96 |
-| `fallthrough`                   | Flow      | Dark Blue  | ​ 96, 128, 224 |
-| `likely`                        | Positive  | Green      | 176, 224, 128 |
-| `maybe_unused`                  | Positive  | Green      | 176, 224, 128 |
+| `deprecated`                    | Warning   | Yellow     | 224, 224, 128 |
+| `deprecated`: Reason            | String    | Red        | 224, 128, 128 |
+| `fallthrough`                   | Flow      | Violet     | 128, 128, 224 |
+| `likely`                        | Positive  | Green      | 128, 224, 128 |
+| `maybe_unused`                  | Warning   | Yellow     | 224, 224, 128 |
 | `no_unique_address`             | Keyword   | Blue       | 128, 176, 224 |
-| `nodiscard`                     | Warning   | Yellow     | 224, 224, 128 |
-| `noreturn`                      | Important | Dark Red   | 224, ​ 96, ​ 96 |
+| `nodiscard`                     | Keyword   | Blue       | 128, 176, 224 |
+| `noreturn`                      | Warning   | Yellow     | 224, 224, 128 |
 | `optimize_for_synchronized`     | Keyword   | Blue       | 128, 176, 224 |
 | `unlikely`                      | Negative  | Red        | 224, 128, 128 |
 | Contract: `assert`              | Warning   | Yellow     | 224, 224, 128 |
 | Contract: `ensures`             | Positive  | Green      | 176, 224, 128 |
 | Contract: `ensures`: Identifier | Plain     | Dark White | 176, 176, 176 |
-| Contract: `expects`             | Param     | Orange     | 224, 176, 128 |
+| Contract: `expects`             | Negative  | Red        | 224, 128, 128 |
 | Contract: Expression            | Plain     | Dark White | 176, 176, 176 |
 | Contract: Level: `audit`        | Warning   | Yellow     | 224, 224, 128 |
 | Contract: Level: `axiom`        | Positive  | Green      | 176, 224, 128 |

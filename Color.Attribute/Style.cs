@@ -134,7 +134,7 @@ namespace Color.Attribute
 			DisplayName = "C++ Attribute: \"maybe_unused\"";
 
 			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Positive;
+			ForegroundColor = Default.Colors.Warning;
 		}
 	}
 
@@ -172,7 +172,7 @@ namespace Color.Attribute
 			DisplayName = "C++ Attribute: \"nodiscard\"";
 
 			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Warning;
+			ForegroundColor = Default.Colors.Keyword;
 		}
 	}
 
@@ -191,7 +191,7 @@ namespace Color.Attribute
 			DisplayName = "C++ Attribute: \"noreturn\"";
 
 			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Important;
+			ForegroundColor = Default.Colors.Warning;
 		}
 	}
 
@@ -250,7 +250,7 @@ namespace Color.Attribute
 			DisplayName = "C++ Attribute: \"deprecated\"";
 
 			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Important;
+			ForegroundColor = Default.Colors.Warning;
 		}
 	}
 
@@ -367,7 +367,7 @@ namespace Color.Attribute
 			DisplayName = "C++ Attribute: Contract: \"expects\"";
 
 			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Param;
+			ForegroundColor = Default.Colors.Negative;
 		}
 	}
 
