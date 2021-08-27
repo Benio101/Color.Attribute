@@ -4,6 +4,7 @@
 ## Status
 | Branch | Build Status
 | ---    | ---
+| [`2022`](https://github.com/Benio101/Color.Attribute/tree/2022) | [![Build status](https://ci.appveyor.com/api/projects/status/af3p32abt7un5ul3/branch/2022?svg=true)](https://ci.appveyor.com/project/Benio101/color-attribute/branch/2022)
 | [`2019`](https://github.com/Benio101/Color.Attribute/tree/2019) | [![Build status](https://ci.appveyor.com/api/projects/status/af3p32abt7un5ul3/branch/2019?svg=true)](https://ci.appveyor.com/project/Benio101/color-attribute/branch/2019)
 | [`2017`](https://github.com/Benio101/Color.Attribute/tree/2017) | [![Build status](https://ci.appveyor.com/api/projects/status/af3p32abt7un5ul3/branch/2017?svg=true)](https://ci.appveyor.com/project/Benio101/color-attribute/branch/2017)
 
@@ -72,6 +73,11 @@ Full list of customizable Attribute entries, with their default colors:
 | Contract: Level: `default`      | Negative  | Red        | 224, 128, 128 |
 | Punctuation                     | Punct     | Gray       | 128, 128, 128 |
 | Punctuation: `[[` & `]]`        | Punct     | Gray       | 128, 128, 128 |
+
+## Newer versions
+### 2022
+- Branch: [`2022`](https://github.com/Benio101/Color.Attribute/tree/2022)
+- Marketplace: [`Color.Attribute (2022)`](https://marketplace.visualstudio.com/items?itemName=Benio.ColorAttribute2022)
 
 ## Older versions
 ### 2017
