@@ -75,6 +75,12 @@ Full list of customizable Attribute entries, with their default colors:
 | Punctuation: `[[` & `]]`        | Punct     | Gray       | 128, 128, 128 |
 
 ## Older versions
+### 2019
+- Branch: [`2019`](https://github.com/Benio101/Color.Attribute/tree/2019)
+- Release: [`1.0.2.2+2019`](https://github.com/Benio101/Color.Attribute/releases/tag/1.0.2.2%2B2019)
+- Download: [`Color.Attribute.vsix`](https://github.com/Benio101/Color.Attribute/releases/download/1.0.2.2%2B2019/Color.Attribute.vsix)
+- Marketplace: [`Color.Attribute (2019)`](https://marketplace.visualstudio.com/items?itemName=Benio.ColorAttribute2019)
+
 ### 2017
 - Branch: [`2017`](https://github.com/Benio101/Color.Attribute/tree/2017)
 - Release: [`1.0.2.1+2017`](https://github.com/Benio101/Color.Attribute/releases/tag/1.0.2.1%2B2017)
