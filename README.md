@@ -60,6 +60,7 @@ Full list of customizable Attribute entries, with their default colors:
 | `maybe_unused`                  | Warning   | Yellow     | 224, 224, 128 |
 | `no_unique_address`             | Keyword   | Blue       | 128, 176, 224 |
 | `nodiscard`                     | Keyword   | Blue       | 128, 176, 224 |
+| `nodiscard`: Reason             | String    | Red        | 224, 128, 128 |
 | `noreturn`                      | Warning   | Yellow     | 224, 224, 128 |
 | `optimize_for_synchronized`     | Keyword   | Blue       | 128, 176, 224 |
 | `unlikely`                      | Negative  | Red        | 224, 128, 128 |

@@ -53,11 +53,6 @@ namespace Color.Attribute
 		Definition_Attribute_no_unique_address;
 
 		[Export(typeof(ClassificationTypeDefinition))]
-		[Name("Attribute.nodiscard")]
-		private static readonly ClassificationTypeDefinition
-		Definition_Attribute_nodiscard;
-
-		[Export(typeof(ClassificationTypeDefinition))]
 		[Name("Attribute.noreturn")]
 		private static readonly ClassificationTypeDefinition
 		Definition_Attribute_noreturn;
@@ -83,6 +78,19 @@ namespace Color.Attribute
 		[Name("Attribute.Deprecated.Reason")]
 		private static readonly ClassificationTypeDefinition
 		Definition_Attribute_Deprecated_Reason;
+
+		#endregion
+		#region Attribute.Nodiscard
+
+		[Export(typeof(ClassificationTypeDefinition))]
+		[Name("Attribute.Nodiscard.Mark")]
+		private static readonly ClassificationTypeDefinition
+		Definition_Attribute_Nodiscard_Mark;
+
+		[Export(typeof(ClassificationTypeDefinition))]
+		[Name("Attribute.Nodiscard.Reason")]
+		private static readonly ClassificationTypeDefinition
+		Definition_Attribute_Nodiscard_Reason;
 
 		#endregion
 		#region Attribute.Contract

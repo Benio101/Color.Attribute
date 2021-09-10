@@ -158,25 +158,6 @@ namespace Color.Attribute
 	}
 
 	[Export(typeof(EditorFormatDefinition))]
-	[ClassificationType(ClassificationTypeNames = "Attribute.nodiscard")]
-	[Name("Attribute.nodiscard")]
-	[BaseDefinition(PredefinedClassificationTypeNames.Other)]
-	[UserVisible(true)]
-	[Order(After = "Attribute")]
-	internal sealed class Format_Attribute_nodiscard
-	:
-		ClassificationFormatDefinition
-	{
-		public Format_Attribute_nodiscard()
-		{
-			DisplayName = "C++ Attribute: \"nodiscard\"";
-
-			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Keyword;
-		}
-	}
-
-	[Export(typeof(EditorFormatDefinition))]
 	[ClassificationType(ClassificationTypeNames = "Attribute.noreturn")]
 	[Name("Attribute.noreturn")]
 	[BaseDefinition(PredefinedClassificationTypeNames.Other)]
@@ -267,6 +248,47 @@ namespace Color.Attribute
 		public Format_Attribute_Deprecated_Reason()
 		{
 			DisplayName = "C++ Attribute: \"deprecated\": Reason";
+
+			BackgroundCustomizable = false;
+			ForegroundColor = Default.Colors.String;
+		}
+	}
+
+	#endregion
+	#region Attribute.Nodiscard
+
+	[Export(typeof(EditorFormatDefinition))]
+	[ClassificationType(ClassificationTypeNames = "Attribute.Nodiscard.Mark")]
+	[Name("Attribute.Nodiscard.Mark")]
+	[BaseDefinition(PredefinedClassificationTypeNames.Other)]
+	[UserVisible(true)]
+	[Order(After = "Attribute")]
+	internal sealed class Format_Attribute_Nodiscard_Mark
+	:
+		ClassificationFormatDefinition
+	{
+		public Format_Attribute_Nodiscard_Mark()
+		{
+			DisplayName = "C++ Attribute: \"nodiscard\"";
+
+			BackgroundCustomizable = false;
+			ForegroundColor = Default.Colors.Keyword;
+		}
+	}
+
+	[Export(typeof(EditorFormatDefinition))]
+	[ClassificationType(ClassificationTypeNames = "Attribute.Nodiscard.Reason")]
+	[Name("Attribute.Nodiscard.Reason")]
+	[BaseDefinition(PredefinedClassificationTypeNames.Other)]
+	[UserVisible(true)]
+	[Order(After = "Attribute")]
+	internal sealed class Format_Attribute_Nodiscard_Reason
+	:
+		ClassificationFormatDefinition
+	{
+		public Format_Attribute_Nodiscard_Reason()
+		{
+			DisplayName = "C++ Attribute: \"nodiscard\": Reason";
 
 			BackgroundCustomizable = false;
 			ForegroundColor = Default.Colors.String;

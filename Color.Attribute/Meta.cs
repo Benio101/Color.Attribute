@@ -9,7 +9,6 @@
 			"likely",
 			"maybe_unused",
 			"no_unique_address",
-			"nodiscard",
 			"noreturn",
 			"optimize_for_synchronized",
 			"unlikely"

@@ -29,9 +29,15 @@ namespace Color.Attribute
 			private readonly IClassificationType Deprecated_Reason;
 
 		#endregion
+		#region Attribute.Nodiscard
+
+		private readonly IClassificationType Nodiscard_Mark;
+		private readonly IClassificationType Nodiscard_Reason;
+
+		#endregion
 		#region Attribute.Contract
 
-			private readonly IClassificationType Contract_Expression;
+		private readonly IClassificationType Contract_Expression;
 			private readonly IClassificationType Contract_Assert_Mark;
 			private readonly IClassificationType Contract_Ensures_Mark;
 			private readonly IClassificationType Contract_Ensures_Identifier;
@@ -64,9 +70,15 @@ namespace Color.Attribute
 				Deprecated_Reason = Registry.GetClassificationType("Attribute.Deprecated.Reason");
 
 			#endregion
+			#region Attribute.Nodiscard
+
+				Nodiscard_Mark   = Registry.GetClassificationType("Attribute.Nodiscard.Mark");
+				Nodiscard_Reason = Registry.GetClassificationType("Attribute.Nodiscard.Reason");
+
+			#endregion
 			#region Attribute.Contract
 
-				Contract_Expression         = Registry.GetClassificationType("Attribute.Contract.Expression");
+			Contract_Expression         = Registry.GetClassificationType("Attribute.Contract.Expression");
 				Contract_Assert_Mark        = Registry.GetClassificationType("Attribute.Contract.Assert.Mark");
 				Contract_Ensures_Mark       = Registry.GetClassificationType("Attribute.Contract.Ensures.Mark");
 				Contract_Ensures_Identifier = Registry.GetClassificationType("Attribute.Contract.Ensures.Identifier");
@@ -306,6 +318,63 @@ namespace Color.Attribute
 								Position + Value.Groups["Reason"].Index,
 								Value.Groups["Reason"].Length
 							)), Deprecated_Reason
+						));
+
+						Spans.Add(new ClassificationSpan(new SnapshotSpan
+						(
+							Span.Snapshot, new Span
+							(
+								Position + Value.Groups["Paren_Close"].Index,
+								Value.Groups["Paren_Close"].Length
+							)), CommonStyleDefinitions["Punct"]
+						));
+					}
+
+					#endregion
+					#region Attribute.Nodiscard
+
+					foreach (Match Value in new Regex
+					(
+							"^(?<Attribute>nodiscard)"        // "nodiscard"
+						+   "("
+						+       @"[ \t\v\n\f]*"
+						+       @"(?<Paren_Open>\()"           // "("
+						+       @"[ \t\v\n\f]*"
+						+       @"(?<Reason>[^""]*""[^""]*"")" // string-literal (simplified)
+						+       @"[ \t\v\n\f]*"
+						+       @"(?<Paren_Close>\))"          // ")"
+						+   ")?$"
+					)
+						.Matches(Entry)
+					) {
+						Spans.Add(new ClassificationSpan(new SnapshotSpan
+						(
+							Span.Snapshot, new Span
+							(
+								Position + Value.Groups["Attribute"].Index,
+								Value.Groups["Attribute"].Length
+							)), Nodiscard_Mark
+						));
+
+						if (Value.Groups["Reason"].Length == 0)
+							continue;
+
+						Spans.Add(new ClassificationSpan(new SnapshotSpan
+						(
+							Span.Snapshot, new Span
+							(
+								Position + Value.Groups["Paren_Open"].Index,
+								Value.Groups["Paren_Open"].Length
+							)), CommonStyleDefinitions["Punct"]
+						));
+
+						Spans.Add(new ClassificationSpan(new SnapshotSpan
+						(
+							Span.Snapshot, new Span
+							(
+								Position + Value.Groups["Reason"].Index,
+								Value.Groups["Reason"].Length
+							)), Nodiscard_Reason
 						));
 
 						Spans.Add(new ClassificationSpan(new SnapshotSpan
