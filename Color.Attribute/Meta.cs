@@ -19,11 +19,5 @@
 			"Squares",
 			"Punct"
 		};
-
-		internal static readonly string[] SingleContractAttributeList =
-		{
-			"assert",
-			"expects"
-		};
 	}
 }

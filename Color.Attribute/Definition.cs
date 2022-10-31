@@ -93,51 +93,18 @@ namespace Color.Attribute
 		Definition_Attribute_Nodiscard_Reason;
 
 		#endregion
-		#region Attribute.Contract
+		#region Attribute.Assume
 
 		[Export(typeof(ClassificationTypeDefinition))]
-		[Name("Attribute.Contract.Expression")]
+		[Name("Attribute.Assume.Mark")]
 		private static readonly ClassificationTypeDefinition
-		Definition_Attribute_Contract_Expression;
+		Definition_Attribute_Assume_Mark;
 
 		[Export(typeof(ClassificationTypeDefinition))]
-		[Name("Attribute.Contract.Assert.Mark")]
+		[Name("Attribute.Assume.Expression")]
 		private static readonly ClassificationTypeDefinition
-		Definition_Attribute_Contract_Assert_Mark;
+		Definition_Attribute_Assume_Expression;
 
-		[Export(typeof(ClassificationTypeDefinition))]
-		[Name("Attribute.Contract.Ensures.Mark")]
-		private static readonly ClassificationTypeDefinition
-		Definition_Attribute_Contract_Ensures_Mark;
-
-		[Export(typeof(ClassificationTypeDefinition))]
-		[Name("Attribute.Contract.Ensures.Identifier")]
-		private static readonly ClassificationTypeDefinition
-		Definition_Attribute_Contract_Ensures_Identifier;
-
-		[Export(typeof(ClassificationTypeDefinition))]
-		[Name("Attribute.Contract.Expects.Mark")]
-		private static readonly ClassificationTypeDefinition
-		Definition_Attribute_Contract_Expects_Mark;
-
-		#region Attribute.Contract.Level
-
-		[Export(typeof(ClassificationTypeDefinition))]
-		[Name("Attribute.Contract.Level.Audit")]
-		private static readonly ClassificationTypeDefinition
-		Definition_Attribute_Contract_Level_Audit;
-
-		[Export(typeof(ClassificationTypeDefinition))]
-		[Name("Attribute.Contract.Level.Axiom")]
-		private static readonly ClassificationTypeDefinition
-		Definition_Attribute_Contract_Level_Axiom;
-
-		[Export(typeof(ClassificationTypeDefinition))]
-		[Name("Attribute.Contract.Level.Default")]
-		private static readonly ClassificationTypeDefinition
-		Definition_Attribute_Contract_Level_Default;
-
-		#endregion
 		#endregion
 
 		#pragma warning restore IDE0051

@@ -31,20 +31,14 @@ namespace Color.Attribute
 		#endregion
 		#region Attribute.Nodiscard
 
-		private readonly IClassificationType Nodiscard_Mark;
-		private readonly IClassificationType Nodiscard_Reason;
+			private readonly IClassificationType Nodiscard_Mark;
+			private readonly IClassificationType Nodiscard_Reason;
 
 		#endregion
-		#region Attribute.Contract
+		#region Attribute.Assume
 
-		private readonly IClassificationType Contract_Expression;
-			private readonly IClassificationType Contract_Assert_Mark;
-			private readonly IClassificationType Contract_Ensures_Mark;
-			private readonly IClassificationType Contract_Ensures_Identifier;
-			private readonly IClassificationType Contract_Expects_Mark;
-			private readonly IClassificationType Contract_Level_Audit;
-			private readonly IClassificationType Contract_Level_Axiom;
-			private readonly IClassificationType Contract_Level_Default;
+		private readonly IClassificationType Assume_Mark;
+		private readonly IClassificationType Assume_Expression;
 
 		#endregion
 
@@ -72,20 +66,14 @@ namespace Color.Attribute
 			#endregion
 			#region Attribute.Nodiscard
 
-				Nodiscard_Mark   = Registry.GetClassificationType("Attribute.Nodiscard.Mark");
-				Nodiscard_Reason = Registry.GetClassificationType("Attribute.Nodiscard.Reason");
+				Nodiscard_Mark    = Registry.GetClassificationType("Attribute.Nodiscard.Mark");
+				Nodiscard_Reason  = Registry.GetClassificationType("Attribute.Nodiscard.Reason");
 
 			#endregion
-			#region Attribute.Contract
+			#region Attribute.Assume
 
-			Contract_Expression         = Registry.GetClassificationType("Attribute.Contract.Expression");
-				Contract_Assert_Mark        = Registry.GetClassificationType("Attribute.Contract.Assert.Mark");
-				Contract_Ensures_Mark       = Registry.GetClassificationType("Attribute.Contract.Ensures.Mark");
-				Contract_Ensures_Identifier = Registry.GetClassificationType("Attribute.Contract.Ensures.Identifier");
-				Contract_Expects_Mark       = Registry.GetClassificationType("Attribute.Contract.Expects.Mark");
-				Contract_Level_Audit        = Registry.GetClassificationType("Attribute.Contract.Level.Audit");
-				Contract_Level_Axiom        = Registry.GetClassificationType("Attribute.Contract.Level.Axiom");
-				Contract_Level_Default      = Registry.GetClassificationType("Attribute.Contract.Level.Default");
+				Assume_Mark       = Registry.GetClassificationType("Attribute.Assume.Mark");
+				Assume_Expression = Registry.GetClassificationType("Attribute.Assume.Expression");
 
 			#endregion
 		}
@@ -388,172 +376,38 @@ namespace Color.Attribute
 					}
 
 					#endregion
-					#region Attribute.Contract
-
-					foreach (var Attr in Meta.SingleContractAttributeList)
-					{
-						var ClassificationMark =
-						(
-								Attr == "expects"
-							?	Contract_Expects_Mark
-							:	Contract_Assert_Mark
-						);
-
-						foreach (Match Value in new Regex
-						(
-								"^(?<Attribute>" + Attr + ")"         // attribute-token
-							+	"("
-							+		@"[ \t\v\n\f]+"
-							+		"(?<Level>(audit|axiom|default))" // contract-level
-							+	")?"
-							+	@"[ \t\v\n\f]*"
-							+	"(?<Punct>:)"                         // ":"
-							+	@"(?<Expression>([^\]]|\](?!\]))+)$"  // expression (simplified)
-						)
-							.Matches(Entry)
-						)
-						{
-							Spans.Add(new ClassificationSpan(new SnapshotSpan
-							(
-								Span.Snapshot, new Span
-								(
-									Position + Value.Groups["Attribute"].Index,
-									Value.Groups["Attribute"].Length
-								)), ClassificationMark
-							));
-
-							if (Value.Groups["Level"].Length > 0)
-							{
-								var Level = Value.Groups["Level"].Value;
-
-								IClassificationType ClassificationLevel;
-								switch (Level)
-								{
-									case "audit":
-
-										ClassificationLevel = Contract_Level_Audit;
-										break;
-
-									case "axiom":
-
-										ClassificationLevel = Contract_Level_Axiom;
-										break;
-
-									default:
-
-										ClassificationLevel = Contract_Level_Default;
-										break;
-								}
-
-								Spans.Add(new ClassificationSpan(new SnapshotSpan
-								(
-									Span.Snapshot, new Span
-									(
-										Position + Value.Groups["Level"].Index,
-										Value.Groups["Level"].Length
-									)), ClassificationLevel
-								));
-							}
-
-							Spans.Add(new ClassificationSpan(new SnapshotSpan
-							(
-								Span.Snapshot, new Span
-								(
-									Position + Value.Groups["Punct"].Index,
-									Value.Groups["Punct"].Length
-								)), CommonStyleDefinitions["Punct"]
-							));
-
-							Spans.Add(new ClassificationSpan(new SnapshotSpan
-							(
-								Span.Snapshot, new Span
-								(
-									Position + Value.Groups["Expression"].Index,
-									Value.Groups["Expression"].Length
-								)), Contract_Expression
-							));
-						}
-					}
-
-					#endregion
-					#region Attribute.Contract.Ensures
+					#region Attribute.Assume
 
 					foreach (Match Value in new Regex
 					(
-							"^(?<Attribute>ensures)"                       // "ensures"
-						+	"("
-						+		@"[ \t\v\n\f]+"
-						+		"(?<Level>(audit|axiom|default))"          // contract-level
-						+	")?"
-						+	"("
-						+		@"[ \t\v\n\f]+"
-						+		"(?<Identifier>" + Utils.Identifier + ")?" // identifier
-						+	")?"
-						+	@"[ \t\v\n\f]*"
-						+	"(?<Punct>:)"                                  // ":"
-						+	@"(?<Expression>([^\]]|\](?!\]))+)$"           // expression (s-fied)
+							"^(?<Attribute>assume)"                                                            // "assume"
+						+   "("
+						+       @"[ \t\v\n\f]*"
+						+       @"(?<Paren_Open>\()"                                                           // "("
+						+       @"(?<Expression>[^()]*(?>(?>(?<c>\()[^()]*)+(?>(?<-c>\))[^()]*)+)*(?(c)(?!)))" // expression
+						+       @"(?<Paren_Close>\))"                                                          // ")"
+						+   ")?$"
 					)
 						.Matches(Entry)
-					)
-					{
+					) {
 						Spans.Add(new ClassificationSpan(new SnapshotSpan
 						(
 							Span.Snapshot, new Span
 							(
 								Position + Value.Groups["Attribute"].Index,
 								Value.Groups["Attribute"].Length
-							)), Contract_Ensures_Mark
+							)), Assume_Mark
 						));
 
-						if (Value.Groups["Level"].Length > 0)
-						{
-							var Level = Value.Groups["Level"].Value;
-
-							IClassificationType ClassificationLevel;
-							switch (Level)
-							{
-								case "audit":
-
-									ClassificationLevel = Contract_Level_Audit;
-									break;
-
-								case "axiom":
-
-									ClassificationLevel = Contract_Level_Axiom;
-									break;
-
-								default:
-
-									ClassificationLevel = Contract_Level_Default;
-									break;
-							}
-
-							Spans.Add(new ClassificationSpan(new SnapshotSpan
-							(
-								Span.Snapshot, new Span
-								(
-									Position + Value.Groups["Level"].Index,
-									Value.Groups["Level"].Length
-								)), ClassificationLevel
-							));
-						}
-
-						if (Value.Groups["Identifier"].Length > 0)
-						Spans.Add(new ClassificationSpan(new SnapshotSpan
-						(
-							Span.Snapshot, new Span
-							(
-								Position + Value.Groups["Identifier"].Index,
-								Value.Groups["Identifier"].Length
-							)), Contract_Ensures_Identifier
-						));
+						if (Value.Groups["Expression"].Length == 0)
+							continue;
 
 						Spans.Add(new ClassificationSpan(new SnapshotSpan
 						(
 							Span.Snapshot, new Span
 							(
-								Position + Value.Groups["Punct"].Index,
-								Value.Groups["Punct"].Length
+								Position + Value.Groups["Paren_Open"].Index,
+								Value.Groups["Paren_Open"].Length
 							)), CommonStyleDefinitions["Punct"]
 						));
 
@@ -563,7 +417,16 @@ namespace Color.Attribute
 							(
 								Position + Value.Groups["Expression"].Index,
 								Value.Groups["Expression"].Length
-							)), Contract_Expression
+							)), Assume_Expression
+						));
+
+						Spans.Add(new ClassificationSpan(new SnapshotSpan
+						(
+							Span.Snapshot, new Span
+							(
+								Position + Value.Groups["Paren_Close"].Index,
+								Value.Groups["Paren_Close"].Length
+							)), CommonStyleDefinitions["Punct"]
 						));
 					}
 
