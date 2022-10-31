@@ -296,59 +296,21 @@ namespace Color.Attribute
 	}
 
 	#endregion
-	#region Attribute.Contract
+	#region Attribute.Assume
 
 	[Export(typeof(EditorFormatDefinition))]
-	[ClassificationType(ClassificationTypeNames = "Attribute.Contract.Expression")]
-	[Name("Attribute.Contract.Expression")]
+	[ClassificationType(ClassificationTypeNames = "Attribute.Assume.Mark")]
+	[Name("Attribute.Assume.Mark")]
 	[BaseDefinition(PredefinedClassificationTypeNames.Other)]
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
-	internal sealed class Format_Attribute_Contract_Expression
+	internal sealed class Format_Attribute_Assume_Mark
 	:
 		ClassificationFormatDefinition
 	{
-		public Format_Attribute_Contract_Expression()
+		public Format_Attribute_Assume_Mark()
 		{
-			DisplayName = "C++ Attribute: Contract: Expression";
-
-			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Plain;
-		}
-	}
-
-	[Export(typeof(EditorFormatDefinition))]
-	[ClassificationType(ClassificationTypeNames = "Attribute.Contract.Assert.Mark")]
-	[Name("Attribute.Contract.Assert.Mark")]
-	[BaseDefinition(PredefinedClassificationTypeNames.Other)]
-	[UserVisible(true)]
-	[Order(After = "Attribute")]
-	internal sealed class Format_Attribute_Contract_Assert
-	:
-		ClassificationFormatDefinition
-	{
-		public Format_Attribute_Contract_Assert()
-		{
-			DisplayName = "C++ Attribute: Contract: \"assert\"";
-
-			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Warning;
-		}
-	}
-
-	[Export(typeof(EditorFormatDefinition))]
-	[ClassificationType(ClassificationTypeNames = "Attribute.Contract.Ensures.Mark")]
-	[Name("Attribute.Contract.Ensures.Mark")]
-	[BaseDefinition(PredefinedClassificationTypeNames.Other)]
-	[UserVisible(true)]
-	[Order(After = "Attribute")]
-	internal sealed class Format_Attribute_Contract_Ensures_Mark
-	:
-		ClassificationFormatDefinition
-	{
-		public Format_Attribute_Contract_Ensures_Mark()
-		{
-			DisplayName = "C++ Attribute: Contract: \"ensures\"";
+			DisplayName = "C++ Attribute: \"assume\"";
 
 			BackgroundCustomizable = false;
 			ForegroundColor = Default.Colors.Positive;
@@ -356,102 +318,23 @@ namespace Color.Attribute
 	}
 
 	[Export(typeof(EditorFormatDefinition))]
-	[ClassificationType(ClassificationTypeNames = "Attribute.Contract.Ensures.Identifier")]
-	[Name("Attribute.Contract.Ensures.Identifier")]
+	[ClassificationType(ClassificationTypeNames = "Attribute.Assume.Expression")]
+	[Name("Attribute.Assume.Expression")]
 	[BaseDefinition(PredefinedClassificationTypeNames.Other)]
 	[UserVisible(true)]
 	[Order(After = "Attribute")]
-	internal sealed class Format_Attribute_Contract_Ensures_Identifier
+	internal sealed class Format_Attribute_Assume_Expression
 	:
 		ClassificationFormatDefinition
 	{
-		public Format_Attribute_Contract_Ensures_Identifier()
+		public Format_Attribute_Assume_Expression()
 		{
-			DisplayName = "C++ Attribute: Contract: \"ensures\": Identifier";
+			DisplayName = "C++ Attribute: \"assume\": Expression";
 
 			BackgroundCustomizable = false;
 			ForegroundColor = Default.Colors.Plain;
 		}
 	}
 
-	[Export(typeof(EditorFormatDefinition))]
-	[ClassificationType(ClassificationTypeNames = "Attribute.Contract.Expects.Mark")]
-	[Name("Attribute.Contract.Expects.Mark")]
-	[BaseDefinition(PredefinedClassificationTypeNames.Other)]
-	[UserVisible(true)]
-	[Order(After = "Attribute")]
-	internal sealed class Format_Attribute_Contract_Expects
-	:
-		ClassificationFormatDefinition
-	{
-		public Format_Attribute_Contract_Expects()
-		{
-			DisplayName = "C++ Attribute: Contract: \"expects\"";
-
-			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Negative;
-		}
-	}
-
-	#region Attribute.Contract.Level
-
-	[Export(typeof(EditorFormatDefinition))]
-	[ClassificationType(ClassificationTypeNames = "Attribute.Contract.Level.Default")]
-	[Name("Attribute.Contract.Level.Default")]
-	[BaseDefinition(PredefinedClassificationTypeNames.Other)]
-	[UserVisible(true)]
-	[Order(After = "Attribute")]
-	internal sealed class Format_Attribute_Contract_Level_Default
-	:
-		ClassificationFormatDefinition
-	{
-		public Format_Attribute_Contract_Level_Default()
-		{
-			DisplayName = "C++ Attribute: Contract: Level: \"default\"";
-
-			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Negative;
-		}
-	}
-
-	[Export(typeof(EditorFormatDefinition))]
-	[ClassificationType(ClassificationTypeNames = "Attribute.Contract.Level.Audit")]
-	[Name("Attribute.Contract.Level.Audit")]
-	[BaseDefinition(PredefinedClassificationTypeNames.Other)]
-	[UserVisible(true)]
-	[Order(After = "Attribute")]
-	internal sealed class Format_Attribute_Contract_Level_Audit
-	:
-		ClassificationFormatDefinition
-	{
-		public Format_Attribute_Contract_Level_Audit()
-		{
-			DisplayName = "C++ Attribute: Contract: Level: \"audit\"";
-
-			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Warning;
-		}
-	}
-
-	[Export(typeof(EditorFormatDefinition))]
-	[ClassificationType(ClassificationTypeNames = "Attribute.Contract.Level.Axiom")]
-	[Name("Attribute.Contract.Level.Axiom")]
-	[BaseDefinition(PredefinedClassificationTypeNames.Other)]
-	[UserVisible(true)]
-	[Order(After = "Attribute")]
-	internal sealed class Format_Attribute_Contract_Level_Axiom
-	:
-		ClassificationFormatDefinition
-	{
-		public Format_Attribute_Contract_Level_Axiom()
-		{
-			DisplayName = "C++ Attribute: Contract: Level: \"axiom\"";
-
-			BackgroundCustomizable = false;
-			ForegroundColor = Default.Colors.Positive;
-		}
-	}
-
-	#endregion
 	#endregion
 }
