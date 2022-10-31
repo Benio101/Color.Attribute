@@ -38,11 +38,11 @@ Comments in attributes are not supported. They are treated as text for faster ex
 ### Multiline attributes
 If multiline attribute will be split into multiple spans upon classification, it won't be matched at all.
 
-### `deprecated` reason
-[`deprecated`](https://en.cppreference.com/w/cpp/language/attributes/deprecated) attribute's reason, if present, must be enclosed in `"`, and such created `string-literal` can be prefixed by any number of characters different than `"`, _eg_ `[[deprecated(u8"Use API v2 instead.")]]`, but not `[[deprecated(CMacro_Reason)]]`.
+### `deprecated` and `nodiscard` reason
+[`deprecated`](https://en.cppreference.com/w/cpp/language/attributes/deprecated) and [`nodiscard`](https://en.cppreference.com/w/cpp/language/attributes/nodiscard)  attribute's reason, if present, must be enclosed in `"`, and such created `string-literal` can be prefixed by any number of characters different than `"`, _eg_ `[[deprecated(u8"Use API v2 instead.")]]`, but not `[[deprecated(CMacro_Reason)]]`.
 
-### Contract expression
-[Contract](https://en.cppreference.com/w/cpp/language/attributes/contract)'s expression can not contain `]]`. Parsing expression could be too complex and expensive for this simple extension, _eg_ `[[ensures axiom R: Internal::TextDB::EntryExists("[[" + R + "]]")]]`.
+### `assume` expression
+[Assume](https://en.cppreference.com/w/cpp/language/attributes/assume)'s expression can be a [`balanced-token`](http://eel.is/c++draft/dcl.attr.grammar#nt:balanced-token), _eg_ `[[assume(max(a, b) > 0)]]`.
 
 ## List of Attributes
 Extension exposes all [Standard Attributes](https://en.cppreference.com/w/cpp/language/attributes#Standard_attributes) for customization.
@@ -52,6 +52,8 @@ Full list of customizable Attribute entries, with their default colors:
 | Attribute entry                 | Type      | Color      | RGB (0 – 255) |
 | :---                            | :---      | :---       | :---          |
 | _C++ Attribute_                 | Plain     | Dark White | 176, 176, 176 |
+| `assume`                        | Positive  | Green      | 176, 224, 128 |
+| `assume`: Expression            | Plain     | Dark White | 176, 176, 176 |
 | `carries_dependency`            | Keyword   | Blue       | 128, 176, 224 |
 | `deprecated`                    | Warning   | Yellow     | 224, 224, 128 |
 | `deprecated`: Reason            | String    | Red        | 224, 128, 128 |
@@ -64,16 +66,6 @@ Full list of customizable Attribute entries, with their default colors:
 | `noreturn`                      | Warning   | Yellow     | 224, 224, 128 |
 | `optimize_for_synchronized`     | Keyword   | Blue       | 128, 176, 224 |
 | `unlikely`                      | Negative  | Red        | 224, 128, 128 |
-| Contract: `assert`              | Warning   | Yellow     | 224, 224, 128 |
-| Contract: `ensures`             | Positive  | Green      | 176, 224, 128 |
-| Contract: `ensures`: Identifier | Plain     | Dark White | 176, 176, 176 |
-| Contract: `expects`             | Negative  | Red        | 224, 128, 128 |
-| Contract: Expression            | Plain     | Dark White | 176, 176, 176 |
-| Contract: Level: `audit`        | Warning   | Yellow     | 224, 224, 128 |
-| Contract: Level: `axiom`        | Positive  | Green      | 176, 224, 128 |
-| Contract: Level: `default`      | Negative  | Red        | 224, 128, 128 |
-| Punctuation                     | Punct     | Gray       | 128, 128, 128 |
-| Punctuation: `[[` & `]]`        | Punct     | Gray       | 128, 128, 128 |
 
 ## Older versions
 ### 2019
